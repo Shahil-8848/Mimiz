@@ -11,8 +11,11 @@ export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-
+    const fetchdata = async () => {
+      setMounted(true);
+    };
+    fetchdata();
+  }, []);
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);

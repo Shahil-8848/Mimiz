@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer";
 import { useState } from "react";
 import { Utensils, Leaf, Clock, Star, Flame } from "lucide-react";
 import Image from "next/image";
+import MenuSection from "../component/Menu";
 
 const menuData = {
   Appetizers: [
