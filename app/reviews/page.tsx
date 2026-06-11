@@ -1,5 +1,5 @@
 import { Navigation } from "@/components/navigation";
-import { Footer } from "@/components/footer";
+import Footer from "../component/Footer";
 import { Star } from "lucide-react";
 
 export default function Reviews() {

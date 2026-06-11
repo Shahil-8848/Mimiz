@@ -1,7 +1,8 @@
 "use client";
 
 import { Navigation } from "@/components/navigation";
-import { Footer } from "@/components/footer";
+import Footer from "../component/Footer";
+
 import { useState } from "react";
 
 export default function Reservations() {

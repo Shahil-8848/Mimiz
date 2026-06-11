@@ -1,7 +1,7 @@
 "use client";
 
 import { Navigation } from "@/components/navigation";
-import { Footer } from "@/components/footer";
+import Footer from "../component/Footer";
 import { useState } from "react";
 import { Utensils, Leaf, Clock, Star, Flame } from "lucide-react";
 import Image from "next/image";
@@ -224,11 +224,10 @@ export default function Menu() {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                  selectedCategory === category
-                    ? "bg-gradient-to-r from-amber-600 to-amber-700 text-white shadow-lg scale-105"
-                    : "bg-card border border-border text-foreground hover:border-primary hover:shadow-md hover:scale-102"
-                }`}
+                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${selectedCategory === category
+                  ? "bg-gradient-to-r from-amber-600 to-amber-700 text-white shadow-lg scale-105"
+                  : "bg-card border border-border text-foreground hover:border-primary hover:shadow-md hover:scale-102"
+                  }`}
               >
                 {category}
               </button>

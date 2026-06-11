@@ -1,6 +1,6 @@
 import { Navigation } from "@/components/navigation";
-import { Footer } from "@/components/footer";
 
+import Footer from "../component/Footer";
 export default function Careers() {
   const positions = [
     { title: "Line Cook", department: "Kitchen", type: "Full-time" },

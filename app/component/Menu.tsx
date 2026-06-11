@@ -1,131 +1,106 @@
-"use client"; // Required because you're using useEffect, useRef, and event listeners
+"use client";
 
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Button } from "../../components/ui/button";
 import Image from "next/image";
-
-// Import images properly for Next.js optimization
-import food from "../photos/food.jpg";
-import coffee from "../photos/coffee.jpg";
 import dish from "../photos/dish.jpg";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const menuItems = [
   {
-    id: 1,
-    title: "Artisan Breakfast",
-    description: "Farm-fresh eggs, avocado toast & seasonal fruits",
-
-    image: food,
+    name: "Variety Tray",
+    price: "$17.99",
+    description: "A sampler platter perfect for sharing, featuring a mix of vegetable samosas, aloo pakora, cheese pakora, bhujia, and papadam."
   },
   {
-    id: 2,
-    title: "Fresh Pastries",
-    description: "Handcrafted croissants & buttery delights",
-
-    image: coffee,
+    name: "Paneer Butter Masala",
+    price: "$19.99",
+    description: "Cottage cheese cooked in a creamy tomato sauce, a staple dish celebrated for its rich and velvety texture."
   },
   {
-    id: 3,
-    title: "Signature Coffee",
-    description: "Single-origin pour-over & specialty lattes",
-
-    image: dish,
+    name: "Vegetable Curry",
+    price: "$19.29",
+    description: "Fresh seasonal vegetables simmered in a fragrant curry sauce with onions, garlic, ginger, and a hint of fenugreek."
   },
   {
-    id: 4,
-    title: "Gourmet Sandwiches",
-    description: "Artisan bread with premium ingredients",
-
-    image: food,
+    name: "Palak Paneer",
+    price: "$19.49",
+    description: "Creamy spinach sauce enveloping soft cheese cubes, a rich and comforting classic."
   },
+  {
+    name: "Paneer Tandoori",
+    price: "$21.79",
+    description: "Cottage cheese marinated in yogurt, ginger, and garlic, then grilled in a clay oven for a smoky and succulent finish."
+  },
+  {
+    name: "Paneer Tikka Masala",
+    price: "$21.99",
+    description: "Cottage cheese chunks cooked in a rich tomato sauce with light cream, giving it a magical creamy texture."
+  },
+  {
+    name: "Gobhi Manchurian (V)",
+    price: "$15.99",
+    description: "Golden fried cauliflower florets tossed in a savory mix of onion, garlic, and chili paste."
+  }
 ];
 
 const MenuSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const headingRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
+  const leftColRef = useRef<HTMLDivElement>(null);
+  const rightColRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Heading animation
+      // Left Column Entrance
       gsap.fromTo(
-        headingRef.current?.children,
-        { y: 50, opacity: 0 },
+        leftColRef.current,
+        { x: -50, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 70%",
+          },
+        }
+      );
+
+      // Right Column Entrance
+      gsap.fromTo(
+        rightColRef.current,
+        { x: 50, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 70%",
+          },
+        }
+      );
+
+      // Menu Items Stagger
+      gsap.fromTo(
+        ".menu-item-row",
+        { y: 20, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 1,
+          duration: 0.8,
           stagger: 0.1,
-          ease: "power3.out",
+          ease: "power2.out",
           scrollTrigger: {
-            trigger: headingRef.current,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
+            trigger: leftColRef.current,
+            start: "top 60%",
           },
-        },
+        }
       );
-
-      // Stacked cards animation
-      const cards = cardsRef.current?.querySelectorAll(".menu-card");
-      if (cards) {
-        cards.forEach((card, index) => {
-          gsap.fromTo(
-            card,
-            {
-              y: 100,
-              opacity: 0,
-              rotationX: 15,
-              transformPerspective: 1000,
-            },
-            {
-              y: 0,
-              opacity: 1,
-              rotationX: 0,
-              duration: 1,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: card,
-                start: "top 85%",
-                toggleActions: "play none none reverse",
-              },
-              delay: index * 0.1,
-            },
-          );
-
-          // Hover effect
-          const handleMouseEnter = () => {
-            gsap.to(card, {
-              y: -12,
-              scale: 1.02,
-              boxShadow: "0 20px 60px -15px rgba(0,0,0,0.2)",
-              duration: 0.4,
-              ease: "power2.out",
-            });
-          };
-
-          const handleMouseLeave = () => {
-            gsap.to(card, {
-              y: 0,
-              scale: 1,
-              boxShadow: "0 4px 20px -4px rgba(0,0,0,0.1)",
-              duration: 0.4,
-              ease: "power2.out",
-            });
-          };
-
-          card.addEventListener("mouseenter", handleMouseEnter);
-          card.addEventListener("mouseleave", handleMouseLeave);
-
-          // Cleanup listeners on unmount
-          return () => {
-            card.removeEventListener("mouseenter", handleMouseEnter);
-            card.removeEventListener("mouseleave", handleMouseLeave);
-          };
-        });
-      }
     }, sectionRef);
 
     return () => ctx.revert();
@@ -135,69 +110,76 @@ const MenuSection = () => {
     <section
       ref={sectionRef}
       id="menu"
-      className="py-24 md:py-32 bg-secondary overflow-hidden"
+      className="min-h-screen bg-[#F3E5D8] overflow-hidden flex flex-col lg:flex-row"
     >
-      <div className="container mx-auto px-6">
-        {/* Heading */}
-        <div ref={headingRef} className="text-center mb-16">
-          <span className="inline-block font-body text-sm font-semibold uppercase tracking-widest text-primary mb-4">
-            Our Menu
-          </span>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-            Taste the <span className="italic">Difference</span>
+      {/* Left Column - Menu Card */}
+      <div
+        ref={leftColRef}
+        className="w-full lg:w-[42%] bg-[#C58D54] p-8 md:p-12 lg:p-16 flex flex-col"
+      >
+        <div className="flex justify-between items-start mb-12">
+          <h2 className="font-display text-5xl md:text-6xl text-[#1A1A1A] leading-tight">
+            SIGNATURE<br />PLATES
           </h2>
-          <div className="section-divider mb-6" />
-          <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
-            From morning brews to afternoon delights, every item is crafted with
-            care and the finest ingredients.
-          </p>
+          <div className="text-2xl text-[#1A1A1A]">
+            🍴
+          </div>
         </div>
 
-        {/* Menu Cards Grid */}
-        <div
-          ref={cardsRef}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 stacked-cards"
-        >
-          {menuItems.map((item) => (
-            <article
-              key={item.id}
-              className="menu-card bg-card rounded-2xl overflow-hidden shadow-soft cursor-pointer group"
+        <div className="space-y-0 border-t border-[#1A1A1A]/20">
+          {menuItems.map((item, index) => (
+            <div
+              key={index}
+              className="menu-item-row py-6 border-b border-[#1A1A1A]/20 group cursor-default"
             >
-              {/* Image with Next.js Image component */}
-              <div className="img-zoom aspect-[4/3] overflow-hidden relative">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  priority={item.id <= 2} // Optional: prioritize above-the-fold images
-                />
+              <div className="flex justify-between items-baseline mb-2">
+                <h3 className="font-display text-xl md:text-2xl text-[#1A1A1A] group-hover:translate-x-2 transition-transform duration-300">
+                  {item.name}
+                </h3>
+                <span className="font-body font-bold text-lg text-[#1A1A1A]">
+                  {item.price}
+                </span>
               </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <div className="flex items-start justify-between gap-4 mb-2">
-                  <h3 className="font-display text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                    {item.title}
-                  </h3>
-                  <span className="font-display text-xl font-bold text-primary">
-                    {item.price}
-                  </span>
-                </div>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            </article>
+              <p className="font-body text-sm md:text-base text-[#1A1A1A]/80 leading-relaxed max-w-[90%]">
+                {item.description}
+              </p>
+            </div>
           ))}
         </div>
+      </div>
 
-        {/* View Full Menu Button */}
-        <div className="text-center mt-12">
-          <Button variant="outline" size="lg">
-            View Full Menu
-          </Button>
+      {/* Right Column - Info & Image */}
+      <div
+        ref={rightColRef}
+        className="w-full lg:w-[58%] flex flex-col"
+      >
+        <div className="p-8 md:p-12 lg:p-16 flex-grow flex flex-col justify-center">
+          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl text-[#1A1A1A]  leading-tight">
+            SIGNATURE DISHES.<br />CLASSIC ROOTS.
+          </h2>
+
+          <p className="font-body text-lg text-[#1A1A1A]/80 max-w-2xl mb-10 leading-relaxed">
+            Every item on our menu reflects decades of tradition — recipes passed
+            down, refined through experience, and thoughtfully adapted for today's
+            palate. From bold, aromatic curries to delicate tandoori finishes, our
+            dishes are crafted to honor heritage while welcoming every kind of guest —
+            whether it's your first taste or a family favorite.
+          </p>
+
+          <button className="w-fit px-10 py-4 bg-[#1A1A1A] text-white font-body font-bold uppercase tracking-widest text-sm hover:bg-[#C58D54] transition-colors duration-300 shadow-xl">
+            Reserve a Table
+          </button>
+        </div>
+
+        {/* Large Image Section */}
+        <div className="relative h-[70vh] lg:h-[70vh] w-full overflow-hidden">
+          <Image
+            src={dish}
+            alt="Signature Dish"
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
       </div>
     </section>
