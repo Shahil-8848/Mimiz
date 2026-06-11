@@ -168,7 +168,7 @@ export default function MimizCafeHome() {
       <CateringSection />
 
       {/* ── Gallery ───────────────────────────────────────── */}
-      <GallerySection />
+      {/* <GallerySection /> */}
 
       {/* ── Atmosphere ────────────────────────────────────── */}
       <AtmosphereSection />

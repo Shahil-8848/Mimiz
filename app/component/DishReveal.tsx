@@ -6,8 +6,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import dishImg from "../photos/dish.jpg";
 import BauPic from "../photos/BaoPic.png";
-import BiryaniPic from "../photos/BiryaniPic.jpg";
-import noodles from "../photos/noodles.png";
+import BiryaniPic from "../photos/Madka Biryani .png";
+import noodles from "../photos/Maxican Taco.png";
 import Pizza from "../photos/Pizza.png";
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,10 +15,10 @@ const dishes = [
   {
     number: "01",
     tag: "Chef's Favourite",
-    name: "Paneer\nButter Masala",
-    price: "Rs.320",
+    name: "Maxican\nTaco",
+    price: "Rs.270",
     description:
-      "Velvet-smooth cottage cheese slow-cooked in a rich tomato cream — warm, aromatic, and deeply satisfying in every spoonful.",
+      "",
     accent: "#C58D54",
     imageSrc: noodles,
     overlayColor: "rgba(90,30,0,0.55)",
@@ -29,7 +29,7 @@ const dishes = [
     name: "Bau",
     price: "Rs.280",
     description:
-      "A curated sampler of vegetable samosas, aloo pakora, cheese pakora, bhujia, and papadam — one tray, every flavour.",
+      "A curated sampler of baos, steamed till fluffy, filled with vibrant fillings and served with tangy chutneys.",
     accent: "#F05724",
     imageSrc: BauPic,
     overlayColor: "rgba(10,10,10,0.60)",
@@ -48,7 +48,7 @@ const dishes = [
   {
     number: "04",
     tag: "Fire-Kissed",
-    name: "Paneer\nTandoori",
+    name: "Paneer\Pizza",
     price: "Rs.380",
     description:
       "Marinated overnight, kissed by a clay oven's heat. The smoke tells you it's ready before your eyes even do.",

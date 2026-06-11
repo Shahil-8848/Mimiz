@@ -4,15 +4,20 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import dish from "../photos/dish.jpg";
+import dish from "../photos/Chicken Cashewnut Bao.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const menuItems = [
   {
+    name: "Cheese Cashwenet Bao",
+    price: "Rs. 220",
+    description: "A bao stuffed with cheese and cashewnuts."
+  },
+  {
     name: "Cheese Momo",
     price: "Rs. 179",
-    description: "A sampler platter perfect for sharing, featuring a mix of vegetable samosas, aloo pakora, cheese pakora, bhujia, and papadam."
+    description: "Steamed momos filled with creamy cheese, served with a tangy tomato-based chutney."
   },
   {
     name: "Pan Fried Noodles",

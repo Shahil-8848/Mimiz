@@ -6,9 +6,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 
 // Images from photos
-import dish from "../photos/dish.jpg";
-import chief from "../photos/chief.jpg";
-import food from "../photos/food.jpg";
+import dish from "../photos/roof2.jpeg";
+import chief from "../photos/hallroof1.jpeg";
+import food from "../photos/roof3.jpeg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -80,17 +80,17 @@ const CateringSection = () => {
             CATERING<br />
             THE MIMIZ WAY
           </h2>
-          
+
           <p className="font-body text-lg md:text-xl text-[#1A1A1A]/70 max-w-2xl mx-auto leading-relaxed">
-            Whether you're hosting a wedding, corporate gathering, or private celebration, 
-            our catering brings the warmth of vegetarian hospitality straight to your table. 
-            From full-service spreads to curated menus, Mimiz Cafe delivers flavor, style, 
+            Whether you're hosting a wedding, corporate gathering, or private celebration,
+            our catering brings the warmth of vegetarian hospitality straight to your table.
+            From full-service spreads to curated menus, Mimiz Cafe delivers flavor, style,
             and care — wherever the occasion takes you.
           </p>
         </div>
 
         {/* Image Grid */}
-        <div 
+        <div
           ref={gridRef}
           className="grid grid-cols-1 md:grid-cols-3 gap-4"
         >
@@ -99,7 +99,7 @@ const CateringSection = () => {
             { img: chief, alt: "Professional Chef" },
             { img: food, alt: "Fresh Ingredients" }
           ].map((item, index) => (
-            <div 
+            <div
               key={index}
               className="catering-img relative aspect-[4/5] overflow-hidden group shadow-2xl"
             >
