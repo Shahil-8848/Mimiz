@@ -10,38 +10,38 @@ gsap.registerPlugin(ScrollTrigger);
 
 const menuItems = [
   {
-    name: "Variety Tray",
-    price: "$17.99",
+    name: "Cheese Momo",
+    price: "Rs. 179",
     description: "A sampler platter perfect for sharing, featuring a mix of vegetable samosas, aloo pakora, cheese pakora, bhujia, and papadam."
   },
   {
-    name: "Paneer Butter Masala",
-    price: "$19.99",
+    name: "Pan Fried Noodles",
+    price: "Rs. 299",
     description: "Cottage cheese cooked in a creamy tomato sauce, a staple dish celebrated for its rich and velvety texture."
   },
   {
     name: "Vegetable Curry",
-    price: "$19.29",
+    price: "Rs. 200",
     description: "Fresh seasonal vegetables simmered in a fragrant curry sauce with onions, garlic, ginger, and a hint of fenugreek."
   },
   {
     name: "Palak Paneer",
-    price: "$19.49",
+    price: "Rs. 190",
     description: "Creamy spinach sauce enveloping soft cheese cubes, a rich and comforting classic."
   },
   {
     name: "Paneer Tandoori",
-    price: "$21.79",
+    price: "Rs. 200",
     description: "Cottage cheese marinated in yogurt, ginger, and garlic, then grilled in a clay oven for a smoky and succulent finish."
   },
   {
     name: "Paneer Tikka Masala",
-    price: "$21.99",
+    price: "Rs. 200",
     description: "Cottage cheese chunks cooked in a rich tomato sauce with light cream, giving it a magical creamy texture."
   },
   {
     name: "Gobhi Manchurian (V)",
-    price: "$15.99",
+    price: "Rs. 200",
     description: "Golden fried cauliflower florets tossed in a savory mix of onion, garlic, and chili paste."
   }
 ];
