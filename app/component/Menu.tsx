@@ -183,7 +183,6 @@ const MenuSection = () => {
             alt="Signature Dish"
             fill
             className="object-cover"
-            priority
           />
         </div>
       </div>

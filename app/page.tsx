@@ -8,14 +8,16 @@ import { Navigation } from "@/components/navigation";
 import esewa from "../app/photos/esewa.png";
 import khalti from "../app/photos/khalti.png";
 import imePay from "../app/photos/imePay.png";
-import heroImage from "../app/photos/hall.png";
-import MenuSection from "./component/Menu";
-import GallerySection from "./component/Gallery";
-import CateringSection from "./component/Catering";
-import Footer from "./component/Footer";
-import AtmosphereSection from "./component/Atmosphere";
-import DishReveal from "./component/DishReveal";
-import VideoPromo from "./component/VideoPromo";
+import heroImage from "../app/photos/hall.jpg";
+import dynamic from "next/dynamic";
+
+const VideoPromo = dynamic(() => import("./component/VideoPromo"));
+const MenuSection = dynamic(() => import("./component/Menu"));
+const DishReveal = dynamic(() => import("./component/DishReveal"));
+const CateringSection = dynamic(() => import("./component/Catering"));
+const GallerySection = dynamic(() => import("./component/Gallery"));
+const AtmosphereSection = dynamic(() => import("./component/Atmosphere"));
+const Footer = dynamic(() => import("./component/Footer"));
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 

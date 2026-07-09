@@ -83,7 +83,6 @@ const AtmosphereSection = () => {
           alt="Mimiz Atmosphere"
           fill
           className="object-cover"
-          priority
         />
       </div>
 

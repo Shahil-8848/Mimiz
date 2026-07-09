@@ -182,7 +182,7 @@ export default function AboutUs() {
           {/* Image — no rounded corners, editorial */}
           <div className="gs-image relative overflow-hidden min-h-[50vh] lg:min-h-full">
             <Image
-              src="/photos/about/lounge.png"
+              src="/photos/about/lounge.jpg"
               alt="Mimiz Cafe Lounge"
               fill
               className="object-cover"
@@ -282,7 +282,7 @@ export default function AboutUs() {
           {/* Image — right */}
           <div className="gs-image relative overflow-hidden min-h-[50vh] lg:min-h-full lg:order-2">
             <Image
-              src="/photos/about/smoking.png"
+              src="/photos/about/smoking.jpg"
               alt="Smoking Zone"
               fill
               className="object-cover"
@@ -300,7 +300,7 @@ export default function AboutUs() {
           {/* Image */}
           <div className="gs-image relative overflow-hidden min-h-[50vh] lg:min-h-full">
             <Image
-              src="/photos/about/hall.png"
+              src="/photos/about/hall.jpg"
               alt="Mimiz Hall"
               fill
               className="object-cover"
