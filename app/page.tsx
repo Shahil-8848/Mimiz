@@ -136,7 +136,7 @@ export default function MimizCafeHome() {
               Explore Menu
             </Link>
             <a
-              href="tel:9709178530"
+              href="tel:9709178531"
               className="inline-flex items-center justify-center gap-2 border border-white/40 text-white text-[13px] tracking-[0.1em] uppercase font-semibold px-8 py-3.5 rounded-full hover:bg-white/10 transition-colors duration-300 backdrop-blur-sm"
             >
               <Phone className="w-4 h-4" />

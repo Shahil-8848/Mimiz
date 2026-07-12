@@ -343,7 +343,7 @@ export default function AboutUs() {
               </ul>
 
               <a
-                href="tel:9709178530"
+                href="tel:9709178531"
                 className="gs-stagger-child inline-flex items-center gap-2 bg-[#F05724] text-white text-[12px] tracking-[0.08em] uppercase font-semibold px-7 py-3 rounded-full hover:bg-[#d94d1e] transition-colors w-fit"
               >
                 <Phone className="w-4 h-4" />
@@ -427,11 +427,11 @@ export default function AboutUs() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center gs-reveal">
             <a
-              href="tel:9709178530"
+              href="tel:9709178531"
               className="inline-flex items-center justify-center gap-2 bg-[#F05724] text-white text-[12px] tracking-[0.1em] uppercase font-semibold px-8 py-4 rounded-full hover:bg-[#d94d1e] transition-colors"
             >
               <Phone className="w-4 h-4" />
-              Call 9709178530
+              Call 9709178531
             </a>
             <a
               href="/menu"

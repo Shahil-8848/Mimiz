@@ -15,37 +15,37 @@ const menuItems = [
     description: "A bao stuffed with cheese and cashewnuts."
   },
   {
-    name: "Cheese Momo",
+    name: "Madka Biryani",
     price: "Rs. 179",
     description: "Steamed momos filled with creamy cheese, served with a tangy tomato-based chutney."
   },
   {
-    name: "Pan Fried Noodles",
+    name: "Cooker Momo",
     price: "Rs. 299",
     description: "Cottage cheese cooked in a creamy tomato sauce, a staple dish celebrated for its rich and velvety texture."
   },
   {
-    name: "Vegetable Curry",
+    name: "Russian Salad",
     price: "Rs. 200",
     description: "Fresh seasonal vegetables simmered in a fragrant curry sauce with onions, garlic, ginger, and a hint of fenugreek."
   },
   {
-    name: "Palak Paneer",
+    name: "Veg Pizza",
     price: "Rs. 190",
     description: "Creamy spinach sauce enveloping soft cheese cubes, a rich and comforting classic."
   },
   {
-    name: "Paneer Tandoori",
+    name: "Crispy Onion Ring",
     price: "Rs. 200",
     description: "Cottage cheese marinated in yogurt, ginger, and garlic, then grilled in a clay oven for a smoky and succulent finish."
   },
   {
-    name: "Paneer Tikka Masala",
+    name: "Dragon Panner",
     price: "Rs. 200",
     description: "Cottage cheese chunks cooked in a rich tomato sauce with light cream, giving it a magical creamy texture."
   },
   {
-    name: "Gobhi Manchurian (V)",
+    name: "Khana Set",
     price: "Rs. 200",
     description: "Golden fried cauliflower florets tossed in a savory mix of onion, garlic, and chili paste."
   }
@@ -164,11 +164,7 @@ const MenuSection = () => {
           </h2>
 
           <p className="font-body text-lg text-[#1A1A1A]/80 max-w-2xl mb-10 leading-relaxed">
-            Every item on our menu reflects decades of tradition — recipes passed
-            down, refined through experience, and thoughtfully adapted for today's
-            palate. From bold, aromatic curries to delicate tandoori finishes, our
-            dishes are crafted to honor heritage while welcoming every kind of guest —
-            whether it's your first taste or a family favorite.
+            Every dish at Mimiz Cafe is a celebration of authentic flavors, crafted with the finest ingredients and a passion for excellence. Inspired by timeless recipes and elevated with a modern touch, our menu brings together comfort, creativity, and unforgettable taste. Whether you’re joining us for a quick coffee, a family meal, or a special celebration, every bite is thoughtfully prepared to make every visit feel truly memorable.
           </p>
 
           <button className="w-fit px-10 py-4 bg-[#1A1A1A] text-white font-body font-bold uppercase tracking-widest text-sm hover:bg-[#C58D54] transition-colors duration-300 shadow-xl">

@@ -3,8 +3,57 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Instagram, X, Phone, Mail, MapPin, Share2 } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 import mimiz from "../photos/mimiz.png";
+
+interface IconProps extends React.SVGProps<SVGSVGElement> {
+  size?: number | string;
+}
+
+// Custom Facebook Icon (Official Standalone "f" Path)
+const FacebookIcon = ({ size = 15, ...props }: IconProps) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    width={size}
+    height={size}
+    {...props}
+  >
+    <path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 2.502-5.77 5.234-5.77 1.31 0 2.438.097 2.766.141v3.201h-1.895c-1.984 0-2.37.943-2.37 2.324v1.684h3.542l-.465 3.667h-3.077v7.98H9.101z" />
+  </svg>
+);
+
+// Custom Instagram Icon (Official Camera Outline)
+const InstagramIcon = ({ size = 15, ...props }: IconProps) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    width={size}
+    height={size}
+    {...props}
+  >
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+  </svg>
+);
+
+// Custom TikTok Icon (Official Note Symbol Path)
+const TiktokIcon = ({ size = 15, ...props }: IconProps) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    width={size}
+    height={size}
+    {...props}
+  >
+    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.59 4.23.97 1.2 2.27 2.05 3.71 2.45v3.91c-1.89-.09-3.73-.83-5.2-1.98-.3-.23-.58-.49-.84-.77v7.54c-.04 2.1-.88 4.14-2.37 5.62-1.63 1.64-3.95 2.52-6.27 2.37-2.37-.15-4.59-1.39-5.83-3.44-1.29-2.14-1.38-4.88-.23-7.11 1.09-2.11 3.23-3.56 5.59-3.79V12.7c-1.33.15-2.54.9-3.23 2.04-.74 1.22-.76 2.8-.05 4.04.72 1.26 2.06 2.04 3.51 2.04 1.34.02 2.58-.75 3.14-1.97.23-.5.33-1.05.32-1.6V0h2z" />
+  </svg>
+);
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -83,20 +132,33 @@ const Footer = () => {
           {/* ── Col 1 — About ─────────────────────────────── */}
           <div className="lg:col-span-1">
             <p className="text-white/90 text-sm leading-[1.85] mb-8">
-              Authentic vegetarian cuisine in the heart of Birtamode — where bold
-              flavours, warm spaces, and genuine hospitality come together.
+              Where every visit feels new. We bring together delicious food, handcrafted beverages, and a warm atmosphere to create memorable moments with every guest.
             </p>
 
             {/* Social icons */}
             <div className="flex items-center gap-3">
               {[
-                { Icon: Instagram, href: "#", label: "Instagram" },
-                { Icon: Share2, href: "#", label: "Share" },
-                { Icon: X, href: "#", label: "X" },
+                {
+                  Icon: FacebookIcon,
+                  href: "https://www.facebook.com/profile.php?id=61579968502863",
+                  label: "Facebook",
+                },
+                {
+                  Icon: InstagramIcon,
+                  href: "https://www.instagram.com/mimizcafe/?hl=en",
+                  label: "Instagram",
+                },
+                {
+                  Icon: TiktokIcon,
+                  href: "https://www.tiktok.com/@mimiz.cafe.family?is_from_webapp=1&sender_device=pc",
+                  label: "TikTok",
+                },
               ].map(({ Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="w-9 h-9 rounded-full border border-white/25 flex items-center justify-center text-white/70 hover:text-white hover:border-white/60 hover:bg-white/10 transition-all duration-300"
                 >
@@ -144,8 +206,8 @@ const Footer = () => {
                 {
                   Icon: Phone,
                   label: "Phone",
-                  value: "9709178530",
-                  href: "tel:9709178530",
+                  value: "9709178531",
+                  href: "tel:9709178531",
                 },
                 {
                   Icon: Mail,

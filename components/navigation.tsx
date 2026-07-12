@@ -76,11 +76,11 @@ export function Navigation() {
           ))}
 
           <a
-            href="tel:9709178530"
+            href="tel:9709178531"
             className="flex items-center gap-2 bg-[#F05724] text-white text-[12px] tracking-[0.06em] font-semibold px-5 py-2.5 rounded-full hover:bg-[#d94d1e] transition-colors duration-300 shadow-sm"
           >
             <Phone className="w-3.5 h-3.5 shrink-0" />
-            <span>9709178530</span>
+            <span>9709178531</span>
           </a>
         </div>
 
@@ -111,12 +111,12 @@ export function Navigation() {
             </Link>
           ))}
           <a
-            href="tel:9709178530"
+            href="tel:9709178531"
             className="inline-flex items-center gap-2 bg-[#F05724] text-white text-[12px] tracking-[0.06em] font-semibold px-5 py-3 rounded-full w-fit"
             onClick={() => setIsMobileOpen(false)}
           >
             <Phone className="w-3.5 h-3.5" />
-            <span>9709178530</span>
+            <span>9709178531</span>
           </a>
         </div>
       </div>
