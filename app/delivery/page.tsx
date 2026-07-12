@@ -1,5 +1,11 @@
+import { Metadata } from "next";
 import { Navigation } from "@/components/navigation";
 import Footer from "../component/Footer";
+
+export const metadata: Metadata = {
+  title: "Delivery Details",
+  description: "Get food from Mimiz Cafe Birtamode delivered fresh to your doorstep. Read our delivery zones, options, and ordering instructions.",
+};
 
 export default function Delivery() {
   return (

@@ -1,6 +1,12 @@
+import { Metadata } from "next";
 import { Navigation } from "@/components/navigation";
-
 import Footer from "../component/Footer";
+
+export const metadata: Metadata = {
+  title: "Careers",
+  description: "Join the team at Mimiz Cafe Birtamode. Explore current career opportunities in our kitchen, beverage, and service departments.",
+};
+
 export default function Careers() {
   const positions = [
     { title: "Line Cook", department: "Kitchen", type: "Full-time" },

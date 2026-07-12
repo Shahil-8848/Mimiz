@@ -1,5 +1,12 @@
+import { Metadata } from "next";
 import { Navigation } from "@/components/navigation";
 import Footer from "../component/Footer";
+
+export const metadata: Metadata = {
+  title: "Events & Private Dining",
+  description: "Plan your celebrations, parties, and corporate events at Mimiz Cafe Birtamode. Explore our private dining spaces and custom catering packages.",
+};
+
 export default function Events() {
   return (
     <>

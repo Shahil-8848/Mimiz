@@ -1,6 +1,12 @@
+import { Metadata } from "next";
 import { Navigation } from "@/components/navigation";
 import Footer from "../component/Footer";
 import { Mail, MapPin, Phone } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description: "Find contact info, opening hours, location details, or send a direct message to Mimiz Cafe Birtamode. We are ready to host you.",
+};
 
 export default function Contact() {
   return (

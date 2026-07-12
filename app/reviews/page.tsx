@@ -1,6 +1,12 @@
+import { Metadata } from "next";
 import { Navigation } from "@/components/navigation";
 import Footer from "../component/Footer";
 import { Star } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Customer Reviews",
+  description: "Read guest reviews and feedback for Mimiz Cafe Birtamode. See why people love our vegetarian dishes, friendly staff, and premium atmosphere.",
+};
 
 export default function Reviews() {
   const reviews = [

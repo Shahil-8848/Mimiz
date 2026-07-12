@@ -1,6 +1,12 @@
+import { Metadata } from "next";
 import { Navigation } from "@/components/navigation";
-
 import Footer from "../component/Footer";
+
+export const metadata: Metadata = {
+  title: "Meet Our Team",
+  description: "Meet the talented chefs, expert baristas, and dedicated service staff who make every dining experience special at Mimiz Cafe Birtamode.",
+};
+
 export default function Team() {
   const team = [
     {
