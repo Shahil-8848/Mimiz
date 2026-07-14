@@ -85,7 +85,7 @@ const CateringSection = () => {
             Whether you're hosting a wedding, corporate gathering, or private celebration,
             our catering brings the warmth of vegetarian hospitality straight to your table.
             From full-service spreads to curated menus, Mimiz Cafe delivers flavor, style,
-            and care — wherever the occasion takes you.
+            and care, wherever the occasion takes you.
           </p>
         </div>
 

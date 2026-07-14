@@ -5,49 +5,52 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import dish from "../photos/Chicken Cashewnut Bao.png";
+import dish2 from "../photos/CryspyOnion.png";
+import dish3 from "../photos/RussianSalad.png";
+import dish4 from "../photos/DragonPanner.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const menuItems = [
   {
-    name: "Cheese Cashwenet Bao",
-    price: "Rs. 220",
-    description: "A bao stuffed with cheese and cashewnuts."
+    name: "Bao (Veg / Chicken)",
+    price: "Rs. 289 / 339",
+    description: "Soft, fluffy steamed buns with your choice of savory Veg (Rs. 289) or Chicken (Rs. 339) filling."
   },
   {
-    name: "Madka Biryani",
-    price: "Rs. 179",
-    description: "Steamed momos filled with creamy cheese, served with a tangy tomato-based chutney."
+    name: "Madka Biryani (Veg / Chicken)",
+    price: "Rs. 449 / 459",
+    description: "Aromatic, long-grain basmati rice layered with spices and slow-cooked in a traditional clay pot. Choose Veg (Rs. 449) or Chicken (Rs. 459)."
   },
   {
-    name: "Cooker Momo",
-    price: "Rs. 299",
-    description: "Cottage cheese cooked in a creamy tomato sauce, a staple dish celebrated for its rich and velvety texture."
+    name: "Cooker Momo (Veg / Chicken)",
+    price: "Rs. 229 / 279",
+    description: "Delicious freshly made momos steamed in a pressure cooker to seal in all the juicy goodness. Veg: Rs. 229, Chicken: Rs. 279."
   },
   {
     name: "Russian Salad",
-    price: "Rs. 200",
-    description: "Fresh seasonal vegetables simmered in a fragrant curry sauce with onions, garlic, ginger, and a hint of fenugreek."
+    price: "Rs. 339",
+    description: "A classic refreshing salad of boiled vegetables, diced potatoes, and sweet apples tossed in a rich, creamy mayonnaise dressing."
   },
   {
-    name: "Veg Pizza",
-    price: "Rs. 190",
-    description: "Creamy spinach sauce enveloping soft cheese cubes, a rich and comforting classic."
+    name: "Veg Pizza (Medium / Large)",
+    price: "Rs. 449 / 549",
+    description: "Hand-tossed pizza base topped with robust tomato sauce, seasonal vegetables, and loads of melted mozzarella. Medium: Rs. 449, Large: Rs. 549."
   },
   {
     name: "Crispy Onion Ring",
-    price: "Rs. 200",
-    description: "Cottage cheese marinated in yogurt, ginger, and garlic, then grilled in a clay oven for a smoky and succulent finish."
+    price: "Rs. 229",
+    description: "Golden-brown, light and crunchy onion rings served hot, the perfect appetizer for sharing."
   },
   {
-    name: "Dragon Panner",
-    price: "Rs. 200",
-    description: "Cottage cheese chunks cooked in a rich tomato sauce with light cream, giving it a magical creamy texture."
+    name: "Dragon Paneer",
+    price: "Rs. 339",
+    description: "Spicy Indo-Chinese classic featuring succulent cubes of paneer tossed in a fiery chili and garlic sauce with bell peppers."
   },
   {
-    name: "Khana Set",
-    price: "Rs. 200",
-    description: "Golden fried cauliflower florets tossed in a savory mix of onion, garlic, and chili paste."
+    name: "Khana Set (Veg)",
+    price: "Rs. 399 / 599",
+    description: "Traditional Thakali rice set served with lentils, vegetables, and pickles. Choose standard Thakali Rice (Rs. 399) or premium Marshi Rice (Rs. 599)."
   }
 ];
 
@@ -153,17 +156,17 @@ const MenuSection = () => {
         </div>
       </div>
 
-      {/* Right Column - Info & Image */}
+      {/* Right Column - Info & 2x2 Images Grid */}
       <div
         ref={rightColRef}
-        className="w-full lg:w-[58%] flex flex-col"
+        className="w-full lg:w-[58%] flex flex-col bg-[#F3E5D8]"
       >
-        <div className="p-8 md:p-12 lg:p-16 flex-grow flex flex-col justify-center">
-          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl text-[#1A1A1A]  leading-tight">
+        <div className="p-8 md:p-12 lg:p-16 pb-4 md:pb-4 lg:pb-6 flex flex-col justify-start">
+          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl text-[#1A1A1A] leading-tight mb-6">
             SIGNATURE DISHES.<br />CLASSIC ROOTS.
           </h2>
 
-          <p className="font-body text-lg text-[#1A1A1A]/80 max-w-2xl mb-10 leading-relaxed">
+          <p className="font-body text-lg text-[#1A1A1A]/80 max-w-2xl mb-8 leading-relaxed">
             Every dish at Mimiz Cafe is a celebration of authentic flavors, crafted with the finest ingredients and a passion for excellence. Inspired by timeless recipes and elevated with a modern touch, our menu brings together comfort, creativity, and unforgettable taste. Whether you’re joining us for a quick coffee, a family meal, or a special celebration, every bite is thoughtfully prepared to make every visit feel truly memorable.
           </p>
 
@@ -172,14 +175,81 @@ const MenuSection = () => {
           </button>
         </div>
 
-        {/* Large Image Section */}
-        <div className="relative h-[70vh] lg:h-[70vh] w-full overflow-hidden">
-          <Image
-            src={dish}
-            alt="Signature Dish"
-            fill
-            className="object-cover"
-          />
+        {/* Bento Grid: 1 large card on the left, 3 stacked cards on the right */}
+        <div className="p-8 md:p-12 lg:p-16 pt-0 md:pt-0 lg:pt-0 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 max-w-5xl h-auto md:h-[500px] lg:h-[580px]">
+          {/* Card 1: Tall Feature Card (Bao) */}
+          <div className="relative overflow-hidden rounded-3xl col-span-1 md:col-span-2 md:row-span-3 h-[280px] md:h-full shadow-lg group border border-[#C58D54]/10">
+            <Image
+              src={dish}
+              alt="Chicken Cashewnut Bao"
+              fill
+              className="object-cover group-hover:scale-108 transition-all duration-700 ease-out"
+            />
+            {/* Elegant overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/90 via-[#1A1A1A]/30 to-transparent transition-opacity duration-500 opacity-80 group-hover:opacity-95" />
+            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 flex flex-col justify-end transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+              <span className="text-xs uppercase tracking-[0.2em] text-[#C58D54] font-semibold mb-1">Featured Dish</span>
+              <h3 className="font-display text-2xl md:text-3xl text-white font-bold tracking-wide">
+                Chicken Cashewnut Bao
+              </h3>
+            </div>
+            {/* Hover border glow */}
+            <div className="absolute inset-4 border border-[#C58D54]/30 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-500" />
+          </div>
+
+          {/* Card 2: Square Top Card (Crispy Onion Ring) */}
+          <div className="relative overflow-hidden rounded-tr-[3rem] rounded-bl-[2rem] rounded-tl-xl rounded-br-xl col-span-1 md:col-span-1 md:row-span-1 h-[140px] md:h-full shadow-lg group border border-[#C58D54]/10">
+            <Image
+              src={dish2}
+              alt="Crispy Onion Ring"
+              fill
+              className="object-cover group-hover:scale-108 transition-all duration-700 ease-out"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/95 via-[#1A1A1A]/20 to-transparent transition-opacity duration-500 opacity-80 group-hover:opacity-95" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+              <span className="text-[9px] uppercase tracking-[0.25em] text-[#C58D54] font-semibold">Appetizer</span>
+              <h3 className="font-display text-base md:text-lg text-white font-bold leading-snug mt-0.5">
+                Crispy Onion Rings
+              </h3>
+            </div>
+            <div className="absolute inset-3 border border-[#C58D54]/30 rounded-tr-[2.5rem] rounded-bl-[1.5rem] rounded-tl-lg rounded-br-lg pointer-events-none opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-500" />
+          </div>
+
+          {/* Card 3: Square Middle Card (Russian Salad) */}
+          <div className="relative overflow-hidden rounded-tl-[3rem] rounded-br-[2rem] rounded-tr-xl rounded-bl-xl col-span-1 md:col-span-1 md:row-span-1 h-[140px] md:h-full shadow-lg group border border-[#C58D54]/10">
+            <Image
+              src={dish3}
+              alt="Russian Salad"
+              fill
+              className="object-cover group-hover:scale-108 transition-all duration-700 ease-out"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/95 via-[#1A1A1A]/20 to-transparent transition-opacity duration-500 opacity-80 group-hover:opacity-95" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+              <span className="text-[9px] uppercase tracking-[0.25em] text-[#C58D54] font-semibold">Salad</span>
+              <h3 className="font-display text-base md:text-lg text-white font-bold leading-snug mt-0.5">
+                Russian Salad
+              </h3>
+            </div>
+            <div className="absolute inset-3 border border-[#C58D54]/30 rounded-tl-[2.5rem] rounded-br-[1.5rem] rounded-tr-lg rounded-bl-lg pointer-events-none opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-500" />
+          </div>
+
+          {/* Card 4: Square Bottom Card (Dragon Paneer) */}
+          <div className="relative overflow-hidden rounded-tr-[3rem] rounded-bl-[2rem] rounded-tl-xl rounded-br-xl col-span-1 md:col-span-1 md:row-span-1 h-[140px] md:h-full shadow-lg group border border-[#C58D54]/10">
+            <Image
+              src={dish4}
+              alt="Dragon Paneer"
+              fill
+              className="object-cover group-hover:scale-108 transition-all duration-700 ease-out"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/95 via-[#1A1A1A]/20 to-transparent transition-opacity duration-500 opacity-80 group-hover:opacity-95" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+              <span className="text-[9px] uppercase tracking-[0.25em] text-[#C58D54] font-semibold">Sizzling</span>
+              <h3 className="font-display text-base md:text-lg text-white font-bold leading-snug mt-0.5">
+                Dragon Paneer
+              </h3>
+            </div>
+            <div className="absolute inset-3 border border-[#C58D54]/30 rounded-tr-[2.5rem] rounded-bl-[1.5rem] rounded-tl-lg rounded-br-lg pointer-events-none opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-500" />
+          </div>
         </div>
       </div>
     </section>

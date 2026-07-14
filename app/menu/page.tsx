@@ -2,364 +2,155 @@
 
 import { Navigation } from "@/components/navigation";
 import Footer from "../component/Footer";
-import { useState } from "react";
-import { Utensils, Leaf, Clock, Star, Flame } from "lucide-react";
-import Image from "next/image";
-import MenuSection from "../component/Menu";
-
-const menuData = {
-  Appetizers: [
-    {
-      name: "Momo (Steam/Fried)",
-      price: "Rs. 180",
-      description:
-        "Traditional dumplings with choice of chicken, buff, or veg filling, served with spicy achar",
-      image:
-        "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=800&q=80",
-      spicy: true,
-      popular: true,
-    },
-    {
-      name: "Chatamari",
-      price: "Rs. 150",
-      description:
-        "Nepali rice crepe topped with minced meat, egg, and fresh vegetables",
-      image:
-        "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&q=80",
-      spicy: false,
-      popular: false,
-    },
-    {
-      name: "Sukuti Sadeko",
-      price: "Rs. 280",
-      description:
-        "Dried buffalo meat tossed with onions, chilies, and Himalayan spices",
-      image:
-        "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80",
-      spicy: true,
-      popular: true,
-    },
-    {
-      name: "Choila",
-      price: "Rs. 250",
-      description: "Grilled spiced meat marinated in traditional Newari style",
-      image:
-        "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=800&q=80",
-      spicy: true,
-      popular: false,
-    },
-  ],
-  "Main Courses": [
-    {
-      name: "Dal Bhat Tarkari Set",
-      price: "Rs. 350",
-      description:
-        "Complete Nepali meal with lentil soup, rice, seasonal vegetables, pickle, and papad",
-      image:
-        "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800&q=80",
-      spicy: false,
-      popular: true,
-    },
-    {
-      name: "Thakali Khana Set",
-      price: "Rs. 450",
-      description:
-        "Traditional Thakali platter with dal, bhat, gundruk, and meat curry",
-      image:
-        "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=800&q=80",
-      spicy: true,
-      popular: true,
-    },
-    {
-      name: "Newari Khaja Set",
-      price: "Rs. 550",
-      description: "Authentic Newari feast with chiura, wo, choila, and bara",
-      image:
-        "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=800&q=80",
-      spicy: true,
-      popular: false,
-    },
-    {
-      name: "Gorkhali Lamb",
-      price: "Rs. 580",
-      description: "Tender lamb cooked in rich gravy with aromatic spices",
-      image:
-        "https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=800&q=80",
-      spicy: true,
-      popular: false,
-    },
-    {
-      name: "Kukhura Ko Masu",
-      price: "Rs. 420",
-      description:
-        "Traditional chicken curry cooked with fresh tomatoes and spices",
-      image:
-        "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=800&q=80",
-      spicy: true,
-      popular: false,
-    },
-    {
-      name: "Vegetable Thukpa",
-      price: "Rs. 280",
-      description:
-        "Hearty noodle soup with mixed vegetables and mountain herbs",
-      image:
-        "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&q=80",
-      spicy: false,
-      popular: false,
-    },
-  ],
-  Desserts: [
-    {
-      name: "Sel Roti with Aloo Achar",
-      price: "Rs. 120",
-      description: "Sweet rice bread rings served with spiced potato curry",
-      image:
-        "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&q=80",
-      spicy: false,
-      popular: true,
-    },
-    {
-      name: "Jeri Swari",
-      price: "Rs. 150",
-      description: "Traditional sweet made from rice flour in sugar syrup",
-      image:
-        "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800&q=80",
-      spicy: false,
-      popular: false,
-    },
-    {
-      name: "Sikarni",
-      price: "Rs. 180",
-      description: "Creamy sweetened yogurt with dry fruits and cardamom",
-      image:
-        "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800&q=80",
-      spicy: false,
-      popular: true,
-    },
-    {
-      name: "Yomari",
-      price: "Rs. 160",
-      description: "Steamed dumpling filled with chaku and sesame seeds",
-      image:
-        "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=800&q=80",
-      spicy: false,
-      popular: false,
-    },
-  ],
-  Beverages: [
-    {
-      name: "Masala Chiya",
-      price: "Rs. 80",
-      description: "Traditional spiced milk tea with aromatic herbs",
-      image:
-        "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=800&q=80",
-      spicy: false,
-      popular: true,
-    },
-    {
-      name: "Butter Tea (Po Cha)",
-      price: "Rs. 100",
-      description: "Traditional Tibetan butter tea with salt",
-      image:
-        "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=800&q=80",
-      spicy: false,
-      popular: false,
-    },
-    {
-      name: "Lassi (Sweet/Salty)",
-      price: "Rs. 120",
-      description: "Refreshing yogurt-based drink",
-      image:
-        "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=800&q=80",
-      spicy: false,
-      popular: true,
-    },
-    {
-      name: "Fresh Lime Soda",
-      price: "Rs. 90",
-      description: "Chilled lime drink with soda and mint",
-      image:
-        "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=800&q=80",
-      spicy: false,
-      popular: false,
-    },
-    {
-      name: "Raksi (Local Spirit)",
-      price: "Rs. 200",
-      description: "Traditional Nepali distilled alcoholic beverage",
-      image:
-        "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80",
-      spicy: false,
-      popular: false,
-    },
-  ],
-};
+import { ExternalLink, QrCode, Smartphone, ShoppingBag, Clock, ShieldCheck } from "lucide-react";
 
 export default function Menu() {
-  const [selectedCategory, setSelectedCategory] = useState("Appetizers");
+  const menuLink = "https://mimiz.ehospitalitynepal.com/guest/gKpQWfCkX8TKWyquxfdzFvkAh3G3/delivery";
+  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(menuLink)}`;
 
   return (
     <>
       <Navigation />
-      <main className="pb-20 min-h-screen bg-gradient-to-b from-background to-muted/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header */}
-          <div className="text-center mb-16 pt-8">
-            <div className="inline-block p-3 bg-primary/10 rounded-full mb-4">
-              <Utensils className="w-8 h-8 text-primary" />
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-amber-600 to-amber-800 bg-clip-text text-transparent">
-              Our Menu
+      <main className="min-h-screen bg-[#F3E5D8] flex flex-col justify-between">
+        {/* Style block for animations */}
+        <style dangerouslySetInnerHTML={{__html: `
+          @keyframes scan {
+            0%, 100% { top: 0%; opacity: 0.8; }
+            50% { top: 100%; opacity: 0.8; }
+          }
+          .scanner-line {
+            animation: scan 4s ease-in-out infinite;
+          }
+          @keyframes pulse-slow {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+          }
+          .glow-effect {
+            animation: pulse-slow 8s ease-in-out infinite;
+          }
+        `}} />
+
+        {/* Hero Section */}
+        <div className="relative bg-[#1A1A1A] pt-32 pb-20 overflow-hidden flex items-center justify-center border-b border-[#C58D54]/20">
+          {/* Decorative Glowing Circle */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#C58D54]/10 blur-[100px] pointer-events-none glow-effect" />
+          
+          <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <span className="font-body text-[#C58D54] uppercase tracking-[0.3em] text-xs md:text-sm font-semibold mb-3 block">
+              Mimiz Cafe Experience
+            </span>
+            <h1 className="font-display text-4xl md:text-6xl text-white font-bold leading-tight tracking-wider mb-6">
+              OUR DIGITAL MENU
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Discover authentic Nepali flavors crafted with traditional recipes
-              and the finest local ingredients
+            <p className="font-body text-gray-300 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+              Explore our full menu online, check out the latest signature plates, and place your order directly. Scan the QR code or click the button below to start.
             </p>
           </div>
+        </div>
 
-          {/* Category Filters */}
-          <div className="flex flex-wrap gap-3 justify-center mb-12">
-            {Object.keys(menuData).map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${selectedCategory === category
-                  ? "bg-gradient-to-r from-amber-600 to-amber-700 text-white shadow-lg scale-105"
-                  : "bg-card border border-border text-foreground hover:border-primary hover:shadow-md hover:scale-102"
-                  }`}
+        {/* Content Section */}
+        <div className="flex-grow max-w-6xl mx-auto w-full px-6 py-12 md:py-16 flex flex-col lg:flex-row gap-12 items-center justify-center">
+          {/* Left Column: Interactive Cards & CTA */}
+          <div className="w-full lg:w-1/2 space-y-8 flex flex-col justify-center text-center lg:text-left">
+            <h2 className="font-display text-3xl md:text-4xl text-[#1A1A1A] font-bold leading-tight">
+              Order Online & Enjoy Fresh Flavors
+            </h2>
+            
+            <p className="font-body text-[#1A1A1A]/85 text-sm md:text-base leading-relaxed">
+              Welcome to the digital storefront of Mimiz Cafe. Through our online ordering platform, you can browse all of our dishes, view active specials, customize options, and secure your order for instant pickup or direct delivery.
+            </p>
+
+            {/* Feature Highlights */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+              <div className="flex items-start gap-3 p-4 bg-white/50 backdrop-blur-sm border border-[#C58D54]/20 rounded-xl">
+                <ShoppingBag className="w-5 h-5 text-[#C58D54] mt-0.5 shrink-0" />
+                <div>
+                  <h4 className="font-display font-bold text-sm text-[#1A1A1A]">Easy Ordering</h4>
+                  <p className="font-body text-xs text-[#1A1A1A]/70 mt-0.5">Quickly select, customize, and add items to your cart.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 p-4 bg-white/50 backdrop-blur-sm border border-[#C58D54]/20 rounded-xl">
+                <Smartphone className="w-5 h-5 text-[#C58D54] mt-0.5 shrink-0" />
+                <div>
+                  <h4 className="font-display font-bold text-sm text-[#1A1A1A]">Mobile Friendly</h4>
+                  <p className="font-body text-xs text-[#1A1A1A]/70 mt-0.5">Perfectly optimized for your mobile device or tablet.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 p-4 bg-white/50 backdrop-blur-sm border border-[#C58D54]/20 rounded-xl">
+                <Clock className="w-5 h-5 text-[#C58D54] mt-0.5 shrink-0" />
+                <div>
+                  <h4 className="font-display font-bold text-sm text-[#1A1A1A]">Real-time Tracking</h4>
+                  <p className="font-body text-xs text-[#1A1A1A]/70 mt-0.5">Track your order preparation and delivery times.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 p-4 bg-white/50 backdrop-blur-sm border border-[#C58D54]/20 rounded-xl">
+                <ShieldCheck className="w-5 h-5 text-[#C58D54] mt-0.5 shrink-0" />
+                <div>
+                  <h4 className="font-display font-bold text-sm text-[#1A1A1A]">Secure Checkout</h4>
+                  <p className="font-body text-xs text-[#1A1A1A]/70 mt-0.5">Safe and secure digital payment methods available.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Primary Action Button */}
+            <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a
+                href={menuLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#1A1A1A] hover:bg-[#C58D54] text-white font-body font-semibold uppercase tracking-wider text-sm rounded-lg transition-colors duration-300 shadow-xl hover:shadow-2xl active:scale-95 duration-150 group"
               >
-                {category}
-              </button>
-            ))}
-          </div>
-
-          {/* Menu Items Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {menuData[selectedCategory as keyof typeof menuData].map(
-              (item, i) => (
-                <div
-                  key={i}
-                  className="group relative bg-card border border-border rounded-2xl overflow-hidden hover:shadow-2xl hover:border-primary/50 transition-all duration-500 hover:-translate-y-2"
-                >
-                  {/* Image Container */}
-                  <div className="relative h-56 overflow-hidden bg-muted">
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-
-                    {/* Image Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                    {/* Popular Badge */}
-                    {item.popular && (
-                      <div className="absolute top-4 right-4 flex items-center gap-1 bg-amber-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg backdrop-blur-sm">
-                        <Star className="w-3.5 h-3.5 fill-current" />
-                        Popular
-                      </div>
-                    )}
-
-                    {/* Spicy Badge */}
-                    {item.spicy && (
-                      <div className="absolute top-4 left-4 flex items-center gap-1 bg-red-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg backdrop-blur-sm">
-                        <Flame className="w-3.5 h-3.5" />
-                        Spicy
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6">
-                    {/* Item Header */}
-                    <div className="mb-3">
-                      <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                        {item.name}
-                      </h3>
-                      <div className="flex items-center justify-between">
-                        <span className="text-2xl font-bold bg-gradient-to-r from-amber-600 to-amber-700 bg-clip-text text-transparent">
-                          {item.price}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Description */}
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-5 line-clamp-2 group-hover:line-clamp-none transition-all">
-                      {item.description}
-                    </p>
-
-                    {/* Order Button */}
-                    <button className="w-full py-3 bg-gradient-to-r from-amber-600 to-amber-700 text-white rounded-xl font-semibold hover:from-amber-700 hover:to-amber-800 transition-all duration-300 shadow-md hover:shadow-xl transform hover:scale-[1.02] flex items-center justify-center gap-2">
-                      <Utensils className="w-4 h-4" />
-                      Add to Order
-                    </button>
-                  </div>
-                </div>
-              )
-            )}
-          </div>
-
-          {/* Special Notes Section */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-            {/* Dietary Info */}
-            <div className="p-8 bg-card border border-border rounded-2xl hover:shadow-xl transition-all duration-300 hover:border-primary/50">
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-lg">
-                  <Leaf className="w-7 h-7 text-white" />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold mb-3">Dietary Options</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    We offer vegetarian and vegan options for most dishes.
-                    Please inform our staff about any dietary restrictions or
-                    allergies.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Timing Info */}
-            <div className="p-8 bg-card border border-border rounded-2xl hover:shadow-xl transition-all duration-300 hover:border-primary/50">
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl shadow-lg">
-                  <Clock className="w-7 h-7 text-white" />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold mb-3">Preparation Time</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Most dishes are prepared fresh to order and may take 15-25
-                    minutes. Traditional Dal Bhat sets require advance notice.
-                  </p>
-                </div>
-              </div>
+                <span>Browse Menu & Order</span>
+                <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+              </a>
             </div>
           </div>
 
-          {/* Special Offer Banner */}
-          <div className="relative p-10 bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 text-white rounded-2xl text-center overflow-hidden shadow-2xl">
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30" />
+          {/* Right Column: QR Code Display Card */}
+          <div className="w-full lg:w-1/2 flex justify-center">
+            <div className="relative bg-white p-8 md:p-10 rounded-3xl shadow-[0_15px_50px_rgba(197,141,84,0.15)] border border-[#C58D54]/20 max-w-sm w-full text-center">
+              {/* Corner Accents */}
+              <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-[#C58D54]" />
+              <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-[#C58D54]" />
+              <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-[#C58D54]" />
+              <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-[#C58D54]" />
 
-            <div className="relative z-10">
-              <div className="inline-block p-3 bg-white/20 rounded-full mb-4 backdrop-blur-sm">
-                <Star className="w-8 h-8 text-white fill-current" />
+              <div className="mb-6 flex justify-center">
+                <div className="p-3 bg-[#F3E5D8]/45 rounded-2xl border border-[#C58D54]/10">
+                  <QrCode className="w-6 h-6 text-[#C58D54]" />
+                </div>
               </div>
-              <h2 className="text-4xl font-bold mb-4">
-                Traditional Thakali Khana Set
-              </h2>
-              <p className="text-white/95 mb-8 max-w-2xl mx-auto text-lg">
-                Experience the authentic flavors of the Himalayas with our
-                special Thakali platter. Perfect for sharing and exploring
-                traditional Nepali cuisine.
+
+              <h3 className="font-display text-xl text-[#1A1A1A] font-bold mb-2">
+                Scan with Phone
+              </h3>
+              
+              <p className="font-body text-xs text-[#1A1A1A]/60 mb-6 max-w-[240px] mx-auto leading-relaxed">
+                Scan this QR code using your phone's camera to instantly view the menu on your screen.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="px-10 py-4 bg-white text-amber-700 rounded-xl hover:bg-gray-50 transition-all font-bold shadow-xl hover:shadow-2xl transform hover:scale-105">
-                  Order Now
-                </button>
-                <button className="px-10 py-4 border-2 border-white text-white rounded-xl hover:bg-white/10 transition-all font-bold backdrop-blur-sm">
-                  View Full Set
-                </button>
+
+              {/* QR Image Container with Scanning Effect */}
+              <div className="relative mx-auto w-56 h-56 p-4 bg-white border-2 border-[#1A1A1A]/10 rounded-2xl overflow-hidden shadow-inner group flex items-center justify-center">
+                {/* Scanner Laser Animation */}
+                <div className="absolute left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[#C58D54] to-transparent scanner-line z-10" />
+                
+                {/* QR Code Image */}
+                <img
+                  src={qrCodeUrl}
+                  alt="Mimiz Digital Menu QR Code"
+                  width={200}
+                  height={200}
+                  className="w-full h-full object-contain relative z-0"
+                />
+              </div>
+
+              <div className="mt-6">
+                <span className="inline-block text-[10px] tracking-[0.2em] font-semibold text-[#C58D54] bg-[#C58D54]/10 px-4 py-1.5 rounded-full uppercase">
+                  mimiz.ehospitalitynepal.com
+                </span>
               </div>
             </div>
           </div>

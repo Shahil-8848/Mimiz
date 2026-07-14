@@ -164,7 +164,7 @@ export default function MimizCafeHome() {
       <MenuSection />
 
       {/* ── Scroll-triggered Dish Reveal ──────────────────── */}
-      <DishReveal />
+      {/* <DishReveal /> */}
 
       {/* ── Catering ──────────────────────────────────────── */}
       <CateringSection />
